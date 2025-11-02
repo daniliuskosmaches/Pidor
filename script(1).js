@@ -773,10 +773,26 @@ function initFormValidation() {
           body: JSON.stringify(formData)
         });
 
-        if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(errorData.message || 'Ошибка сервера');
-        }
+          if (!response.ok) {
+              let errorDetails = `Ошибка сервера. Статус: ${response.status}.`;
+
+              try {
+                  // 1. Пытаемся прочитать ответ как JSON
+                  const errorData = await response.json();
+                  // 2. Если успешно, используем сообщение из JSON
+                  errorDetails = errorData.message || errorDetails;
+              } catch (e) {
+                  // 3. Если JSON.parse падает (пришел HTML или пустой ответ)
+                  console.error('Ошибка парсинга JSON. Прокси вернул не-JSON ответ.', e);
+                  // Дополнительно, вы можете прочитать тело ответа как текст для отладки в консоли
+                  const errorText = await response.text();
+                  console.error('Тело ответа от сервера:', errorText.substring(0, 200));
+
+                  errorDetails = `Прокси-сервер вернул некорректный ответ (Статус: ${response.status}). Проверьте логи прокси/бэкенда.`;
+              }
+
+              throw new Error(errorDetails);
+          }
 
         const data = await response.json();
         showNotification('Ваша заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.', 'success');
