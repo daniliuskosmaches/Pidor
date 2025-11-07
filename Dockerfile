@@ -22,9 +22,9 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 WORKDIR /usr/share/nginx/html
 
 # Копируем все ваши статические файлы в корень сайта
-COPY index(1).html .
+COPY index.html .
 COPY styles.css .
-COPY script(1).js .
+COPY script.js .
 COPY package.json .
 
 # ПРИМЕЧАНИЕ: Если у вас есть папка с картинками (например, 'images'),
