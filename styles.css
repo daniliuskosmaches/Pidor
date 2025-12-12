@@ -39,7 +39,7 @@ html {
 }
 
 body {
-    font-family: 'Forum', serif;
+    font-family: 'Montserrat', "Fira Code Medium", monospace;
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
@@ -272,7 +272,7 @@ nav {
     justify-content: center;
     padding: 15px 30px;
     background: transparent;
-    color: var(--text-color);
+    color: #070a0c;
     border: 2px solid var(--accent-color);
     font-size: 1rem;
     font-weight: bold;
@@ -322,6 +322,18 @@ h2 {
     display: inline-block;
 }
 
+#uslugi {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #070a0c;
+    font-weight: normal;
+    letter-spacing: 2px;
+    position: relative;
+    display: inline-block
+
+}
+
 h2:after {
     content: '';
     position: absolute;
@@ -337,13 +349,37 @@ h2:after {
 .subtitle {
     text-align: center;
     font-size: 1.2rem;
-    color: var(--text-color);
+    color: var(--accent-color);
     margin-bottom: 3rem;
     font-weight: normal;
     opacity: 0.8;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
+}
+#subotitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #070a0c;
+    margin-bottom: 3rem;
+    font-weight: 10000;
+    opacity: 0.8;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+#hell {
+    text-align: center;
+    font-size: 2rem;
+    color: #070a0c;
+    margin-bottom: 3rem;
+    font-weight: bolder;
+    opacity: 0.8;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+
 }
 
 #about {
@@ -713,9 +749,7 @@ h2:after {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: blur(8px);
-    transform: scale(1.1);
-    transition: filter 0.3s ease;
+    transition: transform 0.3s ease;
     z-index: 1;
 }
 
@@ -777,9 +811,7 @@ h2:after {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: blur(8px);
-    transform: scale(1.1);
-    transition: filter 0.3s ease;
+    transition: transform 0.3s ease;
     z-index: 1;
 }
 
@@ -1521,7 +1553,7 @@ h2:after {
 }
 
 .contact-column h3 {
-    color: var(--accent-color);
+    color: #070a0c;
     margin-bottom: 1rem;
     font-size: 1.5rem;
     text-align: center;
@@ -1548,7 +1580,7 @@ h2:after {
 }
 
 .contact-link {
-    color: var(--text-color);
+    color: #070a0c;
     text-decoration: none;
     transition: all 0.3s ease;
 }
@@ -2371,4 +2403,181 @@ h2:after {
     .team-info p {
         font-size: 1.1rem;
     }
+}
+
+
+
+.modal-content.image-modal {
+    width: min(1200px, 90vw);
+    max-height: 90vh;
+    padding: 20px;
+    background: var(--section-light);
+}
+
+.modal-content.image-modal .modal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.modal-content.image-modal img {
+    max-width: 100%;
+    max-height: calc(90vh - 100px);
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+.image-caption {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--bg-color);
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+/* Курсор-указатель для фото в отзывах */
+.review-photo {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.review-photo:hover {
+    transform: scale(1.02);
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    .modal-content.image-modal {
+        width: 95vw;
+        padding: 15px;
+    }
+
+    .modal-content.image-modal img {
+        max-height: calc(90vh - 80px);
+    }
+
+    .image-caption {
+        font-size: 1rem;
+    }
+}
+
+.modal-content.image-modal {
+    /* Эти стили я увидел в вашем файле */
+    width: min(1200px, 90vw);
+    max-height: 90vh;
+    padding: 20px;
+    background: var(--section-light);
+}
+
+.modal-content.image-modal .modal-body {
+    /* Эти стили я увидел в вашем файле */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.modal-content.image-modal img {
+    /* Эти стили я увидел в вашем файле */
+    max-width: 100%;
+    max-height: calc(90vh - 100px); /* Чтобы оставить место для заголовка и отступов */
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    /* Добавлю transition для плавности */
+    transition: transform 0.3s ease;
+}
+
+/* Стили для заголовка изображения */
+.modal-content.image-modal h4 {
+    margin: 0;
+    color: var(--bg-color); /* Или другой подходящий цвет */
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+/* --- Общие стили для модальных окон --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Темный фон */
+    display: none; /* Изначально скрыто */
+    justify-content: center;
+    align-items: center;
+    z-index: 2000; /* Должно быть выше всего остального */
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    display: flex; /* Показываем, когда добавляется класс active */
+    opacity: 1;
+}
+
+.modal-content {
+    background: var(--section-dark);
+    padding: 30px;
+    border-radius: 12px;
+    position: relative;
+    max-width: 90%;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1);
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: var(--accent-color);
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 2010;
+    transition: color 0.2s ease;
+}
+
+.close-modal:hover {
+    color: #f00; /* Красный цвет при наведении */
+}
+
+/* --- Стили для модального окна изображений --- */
+.modal-content.image-modal {
+    width: min(1200px, 90vw);
+    max-height: 90vh;
+    padding: 20px;
+    background: var(--section-dark); /* Используем темный фон для лучшего контраста */
+    border: 1px solid var(--border-color);
+}
+
+.modal-content.image-modal .modal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.modal-content.image-modal img {
+    max-width: 100%;
+    max-height: calc(90vh - 100px);
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+}
+
+.modal-content.image-modal h4 {
+    margin: 0;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    text-align: center;
 }
