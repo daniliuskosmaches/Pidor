@@ -1,303 +1,70 @@
+// --------------------------------------------------------------------------------------
+// ГЛОБАЛЬНЫЕ DOM ЭЛЕМЕНТЫ (Переменные)
+// Используются в renderReviewPhotos и DOMContentLoaded
+// --------------------------------------------------------------------------------------
+
 const imageViewModal = document.getElementById('image-view-modal');
 const modalImageView = document.getElementById('modal-image-view');
 const modalImageTitle = document.getElementById('modal-image-title');
 const closeImageViewModalBtn = document.getElementById('close-image-view-modal');
 
+// Унифицированный URL для заглушечных видео (используется для отсутствующих видео)
+const DEFAULT_VIDEO_URL = "https://daniliuskosmaches.github.io/videos/videos/Bubble.mp4";
+
+// ----------------------------------------------------------------
+// ДАННЫЕ (Обновлены и унифицированы)
+// ----------------------------------------------------------------
+
 const charactersData = [
-    {
-        "name": "Капитан Америка",
-        "desc": "Капитан Америка",
-        "image": "images/amurika.PNG",
-        "price": 5000
-    },
-    {
-        "name": "Barbie",
-        "desc": "Описание для Barbie",
-        "image": "images/barbie.PNG",
-        "price": 4702
-    },
-    {
-        "name": "Бэтгерл",
-        "desc": "Отважная героиня Готэма",
-        "image": "images/batgerrl.PNG",
-        "price": 5500
-    },
-    {
-        "name": "Batmen",
-        "desc": "Описание для Batmen",
-        "image": "images/batmen.PNG",
-        "price": 5714
-    },
-    {
-        "name": "Белоснежка",
-        "desc": "Самая добрая принцесса",
-        "image": "images/belosnezhka.PNG",
-        "price": 5500
-    },
-    {
-        "name": "Buzz",
-        "desc": "Описание для Buzz",
-        "image": "images/buzz.PNG",
-        "price": 5881
-    },
-    {
-        "name": "Cheburashka",
-        "desc": "Описание для Cheburashka",
-        "image": "images/cheburashka.PNG",
-        "price": 6535
-    },
-    {
-        "name": "Clown",
-        "desc": "Описание для Clown",
-        "image": "images/clown.PNG",
-        "price": 6208
-    },
-    {
-        "name": "Clowns",
-        "desc": "Описание для Clowns",
-        "image": "images/clowns.PNG",
-        "price": 7039
-    },
-    {
-        "name": "Djedai",
-        "desc": "Описание для Djedai",
-        "image": "images/djedai.PNG",
-        "price": 4513
-    },
-    {
-        "name": "Фредди Фазбер",
-        "desc": "Поиграй с медведем",
-        "image": "images/fredybazbearholhoholhoohohhool.PNG",
-        "price": 5500
-    },
-    {
-        "name": "Гарри Поттер",
-        "desc": "Юный волшебник из Хогвартса",
-        "image": "images/garypotter.PNG",
-        "price": 6000
-    },
-    {
-        "name": "Grinch",
-        "desc": "Описание для Grinch",
-        "image": "images/grinch.PNG",
-        "price": 5678
-    },
-    {
-        "name": "Халк",
-        "desc": "Зеленный качок",
-        "image": "images/Halk.PNG",
-        "price": 5000
-    },
-    {
-        "name": "Happy New Year",
-        "desc": "Описание для Happy New Year",
-        "image": "images/happy new year.PNG",
-        "price": 5802
-    },
-    {
-        "name": "Joker",
-        "desc": "Описание для Joker",
-        "image": "images/joker.PNG",
-        "price": 7930
-    },
-    {
-        "name": "Kreeper",
-        "desc": "Описание для Kreeper",
-        "image": "images/kreeper.PNG",
-        "price": 7642
-    },
-    {
-        "name": "Ladybug",
-        "desc": "Описание для Ladybug",
-        "image": "images/ladybug.PNG",
-        "price": 4814
-    },
-    {
-        "name": "Lego",
-        "desc": "Описание для Lego",
-        "image": "images/lego.PNG",
-        "price": 5007
-    },
-    {
-        "name": "Malifest",
-        "desc": "Описание для Malifest",
-        "image": "images/malifest.PNG",
-        "price": 5085
-    },
-    {
-        "name": "Matros",
-        "desc": "Описание для Matros",
-        "image": "images/matros.PNG",
-        "price": 7225
-    },
-    {
-        "name": "Maybl",
-        "desc": "Описание для Maybl",
-        "image": "images/maybl.PNG",
-        "price": 7242
-    },
-    {
-        "name": "Mikiandmaus",
-        "desc": "Описание для Mikiandmaus",
-        "image": "images/mikiandmaus.PNG",
-        "price": 6237
-    },
-    {
-        "name": "Mikimaus",
-        "desc": "Описание для Mikimaus",
-        "image": "images/Mikimaus.PNG",
-        "price": 5554
-    },
-    {
-        "name": "Майнкрафт",
-        "desc": "Тюринг полная игра",
-        "image": "images/minicraftblyat.PNG",
-        "price": 4500
-    },
-    {
-        "name": "Minions",
-        "desc": "Описание для Minions",
-        "image": "images/minions.PNG",
-        "price": 7658
-    },
-    {
-        "name": "Naruto",
-        "desc": "Описание для Naruto",
-        "image": "images/naruto.PNG",
-        "price": 7376
-    },
-    {
-        "name": "Neznayka",
-        "desc": "Описание для Neznayka",
-        "image": "images/neznayka.PNG",
-        "price": 6436
-    },
-    {
-        "name": "Patrul",
-        "desc": "Описание для Patrul",
-        "image": "images/patrul.PNG",
-        "price": 7931
-    },
-    {
-        "name": "Пьеро",
-        "desc": "Дед инсайд с ссср",
-        "image": "images/piero.PNG",
-        "price": 6500
-    },
-    {
-        "name": "Pirat",
-        "desc": "Описание для Pirat",
-        "image": "images/pirat.PNG",
-        "price": 7209
-    },
-    {
-        "name": "Pony",
-        "desc": "Описание для Pony",
-        "image": "images/pony.PNG",
-        "price": 5876
-    },
-    {
-        "name": "Футболист",
-        "desc": "Отец роналдо",
-        "image": "images/ronaldo.PNG",
-        "price": 5000
-    },
-    {
-        "name": "Rusalochka",
-        "desc": "Описание для Rusalochka",
-        "image": "images/rusalochka.PNG",
-        "price": 6541
-    },
-    {
-        "name": "Scauts",
-        "desc": "Описание для Scauts",
-        "image": "images/scauts.PNG",
-        "price": 4903
-    },
-    {
-        "name": "Шрек",
-        "desc": "Кто проживает на дне болота",
-        "image": "images/shrek.PNG",
-        "price": 8000
-    },
-    {
-        "name": "Soldat",
-        "desc": "Описание для Soldat",
-        "image": "images/soldat.PNG",
-        "price": 6029
-    },
-    {
-        "name": "Sonik",
-        "desc": "Описание для Sonik",
-        "image": "images/sonik.PNG",
-        "price": 7761
-    },
-    {
-        "name": "Spiderman",
-        "desc": "Описание для Spiderman",
-        "image": "images/spiderman.PNG",
-        "price": 6253
-    },
-    {
-        "name": "Superkot",
-        "desc": "Описание для Superkot",
-        "image": "images/superkot.PNG",
-        "price": 7291
-    },
-    {
-        "name": "Супермен",
-        "desc": "Лунтик в плаще",
-        "image": "images/superpidor.PNG",
-        "price": 5500
-    },
-    {
-        "name": "Svinkapepa",
-        "desc": "Описание для Svinkapepa",
-        "image": "images/svinkapepa.PNG",
-        "price": 6986
-    },
-    {
-        "name": "Teremok",
-        "desc": "Описание для Teremok",
-        "image": "images/teremok.PNG",
-        "price": 4722
-    },
-    {
-        "name": "Thor",
-        "desc": "Описание для Thor",
-        "image": "images/thor.PNG",
-        "price": 4955
-    },
-    {
-        "name": "Tiktokers",
-        "desc": "Описание для Tiktokers",
-        "image": "images/tiktokers.PNG",
-        "price": 5596
-    },
-    {
-        "name": "Железный Человек",
-        "desc": "Гений, миллиардер, плейбой, филантроп",
-        "image": "images/tonysrark.PNG",
-        "price": 6000
-    },
-    {
-        "name": "Transformers",
-        "desc": "Описание для Transformers",
-        "image": "images/transformers.PNG",
-        "price": 6985
-    },
-    {
-        "name": "Trikotaa",
-        "desc": "Описание для Trikotaa",
-        "image": "images/trikotaa.PNG",
-        "price": 5477
-    },
-    {
-        "name": "Wednesday",
-        "desc": "Описание для Wednesday",
-        "image": "images/wednesday.PNG",
-        "price": 6756
-    }
+    { "name": "Captain America", "desc": "Капитан Америка", "image": "images/amurika.PNG", "price": 5000 },
+    { "name": "Barbie", "desc": "Кукла Барби", "image": "images/barbie.PNG", "price": 4702 },
+    { "name": "Batgirl", "desc": "Отважная героиня Готэма", "image": "images/batgerrl.PNG", "price": 5500 },
+    { "name": "Batman", "desc": "Темный рыцарь", "image": "images/batmen.PNG", "price": 5714 },
+    { "name": "Snow White", "desc": "Самая добрая принцесса", "image": "images/belosnezhka.PNG", "price": 5500 },
+    { "name": "Buzz", "desc": "Базз Лайтер", "image": "images/buzz.PNG", "price": 5881 },
+    { "name": "Cheburashka", "desc": "Чебурашка", "image": "images/cheburashka.PNG", "price": 6535 },
+    { "name": "Clown", "desc": "Клоун", "image": "images/clown.PNG", "price": 6208 },
+    { "name": "Clowns", "desc": "Два веселых клоуна", "image": "images/clowns.PNG", "price": 7039 },
+    { "name": "Jedi", "desc": "Джедай", "image": "images/djedai.PNG", "price": 4513 },
+    { "name": "Freddy Fazbear", "desc": "Поиграй с медведем", "image": "images/fredybazbearholhoholhoohohhool.PNG", "price": 5500 },
+    { "name": "Harry Potter", "desc": "Юный волшебник из Хогвартса", "image": "images/garypotter.PNG", "price": 6000 },
+    { "name": "Grinch", "desc": "Гринч", "image": "images/grinch.PNG", "price": 5678 },
+    { "name": "Hulk", "desc": "Зеленый качок", "image": "images/Halk.PNG", "price": 5000 },
+    { "name": "Happy New Year", "desc": "С Новым Годом", "image": "images/happy new year.PNG", "price": 5802 },
+    { "name": "Joker", "desc": "Джокер", "image": "images/joker.PNG", "price": 7930 },
+    { "name": "Creeper", "desc": "Крипер", "image": "images/kreeper.PNG", "price": 7642 },
+    { "name": "Ladybug", "desc": "Леди Баг", "image": "images/ladybug.PNG", "price": 4814 },
+    { "name": "Lego", "desc": "Лего", "image": "images/lego.PNG", "price": 5007 },
+    { "name": "Malifest", "desc": "Малифест", "image": "images/malifest.PNG", "price": 5085 },
+    { "name": "Matros", "desc": "Матрос", "image": "images/matros.PNG", "price": 7225 },
+    { "name": "Maybl", "desc": "Мэйбл", "image": "images/maybl.PNG", "price": 7242 },
+    { "name": "Mikiandmaus", "desc": "Микки и Минни Маус", "image": "images/mikiandmaus.PNG", "price": 6237 },
+    { "name": "Mikimaus", "desc": "Микки Маус", "image": "images/Mikimaus.PNG", "price": 5554 },
+    { "name": "Minecraft", "desc": "Тюринг полная игра", "image": "images/minicraftblyat.PNG", "price": 4500 },
+    { "name": "Minions", "desc": "Миньоны", "image": "images/minions.PNG", "price": 7658 },
+    { "name": "Naruto", "desc": "Наруто", "image": "images/naruto.PNG", "price": 7376 },
+    { "name": "Neznayka", "desc": "Незнайка", "image": "images/neznayka.PNG", "price": 6436 },
+    { "name": "Patrul", "desc": "Патруль", "image": "images/patrul.PNG", "price": 7931 },
+    { "name": "Piero", "desc": "Дед инсайд с ссср", "image": "images/piero.PNG", "price": 6500 },
+    { "name": "Pirat", "desc": "Пират", "image": "images/pirat.PNG", "price": 7209 },
+    { "name": "Pony", "desc": "Пони", "image": "images/pony.PNG", "price": 5876 },
+    { "name": "Football Player", "desc": "Футболист", "image": "images/ronaldo.PNG", "price": 5000 },
+    { "name": "Rusalochka", "desc": "Русалочка", "image": "images/rusalochka.PNG", "price": 6541 },
+    { "name": "Scauts", "desc": "Скауты", "image": "images/scauts.PNG", "price": 4903 },
+    { "name": "Shrek", "desc": "Кто проживает на дне болота", "image": "images/shrek.PNG", "price": 8000 },
+    { "name": "Soldat", "desc": "Солдат", "image": "images/soldat.PNG", "price": 6029 },
+    { "name": "Sonic", "desc": "Соник", "image": "images/sonik.PNG", "price": 7761 },
+    { "name": "Spiderman", "desc": "Человек-паук", "image": "images/spiderman.PNG", "price": 6253 },
+    { "name": "Superkot", "desc": "Супер-Кот", "image": "images/superkot.PNG", "price": 7291 },
+    { "name": "Superman", "desc": "Лунтик в плаще", "image": "images/superpidor.PNG", "price": 5500 },
+    { "name": "Svinkapepa", "desc": "Свинка Пеппа", "image": "images/svinkapepa.PNG", "price": 6986 },
+    { "name": "Teremok", "desc": "Теремок", "image": "images/teremok.PNG", "price": 4722 },
+    { "name": "Thor", "desc": "Тор", "image": "images/thor.PNG", "price": 4955 },
+    { "name": "Tiktokers", "desc": "Тиктокеры", "image": "images/tiktokers.PNG", "price": 5596 },
+    { "name": "Iron Man", "desc": "Гений, миллиардер, плейбой, филантроп", "image": "images/tonysrark.PNG", "price": 6000 },
+    { "name": "Transformers", "desc": "Трансформеры", "image": "images/transformers.PNG", "price": 6985 },
+    { "name": "Trikotaa", "desc": "Три кота", "image": "images/trikotaa.PNG", "price": 5477 },
+    { "name": "Wednesday", "desc": "Уэнсдэй", "image": "images/wednesday.PNG", "price": 6756 }
 ];
 
 const showsData = [
@@ -307,7 +74,7 @@ const showsData = [
         "price": "1400 AED",
         "age": "2-7 лет",
         "duration": "30 минут",
-        "video": "",
+        "video": DEFAULT_VIDEO_URL,
         "image": "images/bubble.jpg"
     },
     {
@@ -361,7 +128,7 @@ const showsData = [
         "price": "1000 AED (до 10 детей)",
         "age": "5-10 лет",
         "duration": "30-45 минут",
-        "video": "videos/slime-show.mov",
+        "video": DEFAULT_VIDEO_URL,
         "image": "images/slime.jpg"
     },
     {
@@ -388,7 +155,7 @@ const showsData = [
         "price": "1400 AED",
         "age": "4-7 лет",
         "duration": "30 минут",
-        "video": "videos/Magic.mp4",
+        "video": DEFAULT_VIDEO_URL,
         "image": "images/magic.jpg"
     },
     {
@@ -424,7 +191,7 @@ const showsData = [
         "price": "700 AED",
         "age": "12-18 лет",
         "duration": "60 минут",
-        "video": "videos/teen.mp4",
+        "video": DEFAULT_VIDEO_URL,
         "image": "images/default-show.jpg"
     }
 ];
@@ -446,9 +213,9 @@ const reviewPhotosData = [
     { id: 8, image: "images/8.jpg", title: "Корпоратив", date: "20.01.2024" },
     { id: 9, image: "images/9.jpg", title: "Свадьба", date: "25.01.2024" },
     { id: 10, image: "images/10.jpg", title: "Тематическая вечеринка", date: "30.01.2024" },
-    { id: 12, image: "images/12.jpg", title: "", date: "10.02.2024"},
-    { id: 13, image: "images/13.jpg", title: "", date: "15.02.2024" },
-    { id: 14, image: "images/14.jpg", title: "", date: "20.02.2024" },
+    { id: 12, image: "images/12.jpg", title: "Фото без названия", date: "10.02.2024"},
+    { id: 13, image: "images/13.jpg", title: "Фото без названия", date: "15.02.2024" },
+    { id: 14, image: "images/14.jpg", title: "Фото без названия", date: "20.02.2024" },
     { id: 15, image: "images/15.jpg", title: "Праздник на природе", date: "25.02.2024" },
     { id: 16, image: "images/16.jpg", title: "Праздник дома", date: "28.02.2024" },
     { id: 17, image: "images/17.jpg", title: "Праздник в кафе", date: "05.03.2024" },
@@ -459,6 +226,7 @@ const reviewPhotosData = [
     { id: 22, image: "images/22.jpg", title: "Праздник в аквапарке", date: "30.03.2024" },
     { id: 23, image: "images/23.jpg", title: "Праздник в цирке", date: "05.04.2024" },
 ];
+
 let currentPackage = null;
 let selectedCharacters = [];
 let selectedShows = [];
@@ -487,48 +255,47 @@ const CUSTOM_PRICES = {
     }
 };
 
-function initSwipers() {
-    const teamSwiper = new Swiper('.team-swiper', {
-        slidesPerView: 1,
-        spaceBetween: 30,
-        navigation: {
-            nextEl: '.team-swiper .swiper-button-next',
-            prevEl: '.team-swiper .swiper-button-prev',
-        },
-        pagination: {
-            el: '.team-swiper .swiper-pagination',
-            clickable: true,
-        },
-        breakpoints: {
-            768: {
-                slidesPerView: 2,
-            },
-            1024: {
-                slidesPerView: 3,
-            },
-        },
-    });
+// --------------------------------------------------------------------------------------
+// ИНИЦИАЛИЗАЦИЯ SWIPERS И FAQ
+// --------------------------------------------------------------------------------------
 
-    const packagesSwiper = new Swiper('.packages-swiper', {
-        slidesPerView: 1,
-        spaceBetween: 30,
-        navigation: {
-            nextEl: '.packages-swiper .swiper-button-next',
-            prevEl: '.packages-swiper .swiper-button-prev',
-        },
-        pagination: {
-            el: '.packages-swiper .swiper-pagination',
-            clickable: true,
-        },
-        breakpoints: {
-            768: {
-                slidesPerView: 2,
+function initSwipers() {
+    // Код инициализации Swipers
+    if (typeof Swiper !== 'undefined') {
+        new Swiper('.team-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            navigation: {
+                nextEl: '.team-swiper .swiper-button-next',
+                prevEl: '.team-swiper .swiper-button-prev',
             },
-            1200: {
-                slidesPerView: 3,
+            pagination: {
+                el: '.team-swiper .swiper-pagination',
+                clickable: true,
             },
-        },
-    });
+            breakpoints: {
+                768: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 },
+            },
+        });
+
+        new Swiper('.packages-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            navigation: {
+                nextEl: '.packages-swiper .swiper-button-next',
+                prevEl: '.packages-swiper .swiper-button-prev',
+            },
+            pagination: {
+                el: '.packages-swiper .swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                768: { slidesPerView: 2 },
+                1200: { slidesPerView: 3 },
+            },
+        });
+    }
 }
 
 function initFAQ() {
@@ -536,24 +303,28 @@ function initFAQ() {
 
     faqItems.forEach(item => {
         const question = item.querySelector('.faq-question');
-
         question.addEventListener('click', () => {
             faqItems.forEach(otherItem => {
                 if (otherItem !== item) {
                     otherItem.classList.remove('active');
                 }
             });
-
             item.classList.toggle('active');
         });
     });
 }
+
+// --------------------------------------------------------------------------------------
+// МОДАЛЬНОЕ ОКНО ВЫБРАННЫХ УСЛУГ (КОРЗИНА)
+// --------------------------------------------------------------------------------------
 
 function initSelectedServicesModal() {
     const viewSelectedBtn = document.getElementById('view-selected-btn');
     const selectedServicesModal = document.getElementById('selected-services-modal');
     const closeSelectedModal = document.getElementById('close-selected-modal');
     const orderFromModal = document.getElementById('order-from-modal');
+
+    if (!viewSelectedBtn || !selectedServicesModal || !closeSelectedModal || !orderFromModal) return;
 
     viewSelectedBtn.addEventListener('click', () => {
         updateSelectedServicesModal();
@@ -566,9 +337,13 @@ function initSelectedServicesModal() {
 
     orderFromModal.addEventListener('click', () => {
         selectedServicesModal.classList.remove('active');
+        const consultForm = document.querySelector('#consultForm');
+        if (consultForm) {
+            consultForm.scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
             });
+        }
     });
 
     selectedServicesModal.addEventListener('click', (e) => {
@@ -580,8 +355,11 @@ function initSelectedServicesModal() {
 
 function updateSelectedServicesModal() {
     const content = document.getElementById('selected-services-content');
+    if (!content) return;
+
     let html = '';
 
+    // Пакет
     if (currentPackage) {
         const packagePrice = currentPackage === 'custom' ? calculateCustomTotal() : basePrice;
         html += `
@@ -592,24 +370,34 @@ function updateSelectedServicesModal() {
         `;
     }
 
+    // Персонажи
     selectedCharacters.forEach(char => {
         const price = currentPackage === 'custom' ? CUSTOM_PRICES.character : 0;
+        html += `<div class="selected-service-item">
                     <span class="service-name">${char.name}</span>
                     <span class="service-price">${currentPackage === 'custom' ? price + '₽' : 'Включено'}</span>
+                </div>`;
     });
 
+    // Шоу
     selectedShows.forEach(show => {
         const price = currentPackage === 'custom' ? CUSTOM_PRICES.show : 0;
+        html += `<div class="selected-service-item">
                     <span class="service-name">${show.name}</span>
                     <span class="service-price">${currentPackage === 'custom' ? price + '₽' : 'Включено'}</span>
+                </div>`;
     });
 
+    // Мастер-классы
     selectedMasterClasses.forEach(master => {
         const price = currentPackage === 'custom' ? CUSTOM_PRICES.master : 0;
+        html += `<div class="selected-service-item">
                     <span class="service-name">${master.name}</span>
                     <span class="service-price">${currentPackage === 'custom' ? price + '₽' : 'Включено'}</span>
+                </div>`;
     });
 
+    // Продукты
     selectedProducts.forEach(prod => {
         let price = prod.price;
         if (currentPackage === 'custom') {
@@ -617,10 +405,13 @@ function updateSelectedServicesModal() {
             else if (prod.id === 'decor') price = CUSTOM_PRICES.products.decor;
             else if (prod.id === 'pinata') price = CUSTOM_PRICES.products.pinata;
         }
+        html += `<div class="selected-service-item">
                     <span class="service-name">${prod.name}</span>
                     <span class="service-price">${price}₽</span>
+                </div>`;
     });
 
+    // Дополнительные услуги
     selectedAdditionalServices.forEach(serv => {
         let price = serv.price;
         if (currentPackage === 'custom') {
@@ -628,8 +419,10 @@ function updateSelectedServicesModal() {
             else if (serv.id === 'pinata') price = CUSTOM_PRICES.products.pinata;
             else if (serv.id === 'cake') price = 0;
         }
+        html += `<div class="selected-service-item">
                     <span class="service-name">${serv.name}</span>
                     <span class="service-price">${price}₽</span>
+                </div>`;
     });
 
     if (html === '') {
@@ -639,54 +432,127 @@ function updateSelectedServicesModal() {
     content.innerHTML = html;
 }
 
-function initSliders() {
+// --------------------------------------------------------------------------------------
+// ФУНКЦИИ РЕНДЕРИНГА
+// --------------------------------------------------------------------------------------
+
+function renderCharacters(charactersToRender) {
     const charactersSlider = document.getElementById('characters-slider');
+    if (!charactersSlider) return;
 
-        charactersData.forEach(character => {
-            const isSelected = selectedCharacters.some(c => c.name === character.name);
-            const card = document.createElement('div');
-            card.className = `character-card-full ${isSelected ? 'selected' : ''}`;
-            card.dataset.name = character.name;
+    charactersSlider.innerHTML = '';
+    charactersToRender.forEach(character => {
+        const isSelected = selectedCharacters.some(c => c.name === character.name);
+        const card = document.createElement('div');
+        card.className = `character-card-full ${isSelected ? 'selected' : ''}`;
+        card.dataset.name = character.name;
+
+        let priceHtml = currentPackage === 'custom' ? `<div class="price-tag">${CUSTOM_PRICES.character}₽</div>` : '';
+
+        card.innerHTML = `<img src="${character.image}" alt="${character.name}" class="character-bg">
+                            <div class="character-info-overlay">
+                                <h4>${character.name}</h4>
+                                <p>${character.desc}</p>
+                                ${priceHtml}
+                            </div>`;
+        charactersSlider.appendChild(card);
+    });
+}
+
+function renderShows(showsToRender) {
+    const showsSlider = document.getElementById('shows-slider');
+    if (!showsSlider) return;
+
+    showsSlider.innerHTML = '';
+    showsToRender.forEach(show => {
+        const isSelected = selectedShows.some(s => s.name === show.name);
+        const card = document.createElement('div');
+        card.className = `show-card-full ${isSelected ? 'selected' : ''}`;
+        card.dataset.name = show.name;
+
+        let priceHtml = currentPackage === 'custom' ? `<div class="price-tag">${CUSTOM_PRICES.show}₽</div>` : '';
+        let displayPrice = currentPackage === 'custom'
+            ? `${CUSTOM_PRICES.show}₽`
+            : (typeof show.price === 'string' ? show.price.replace(/AED/g, '₽') : show.price + '₽');
 
 
-                              <div class="character-info-overlay">
-                                  <h4>${character.name}</h4>
-                                  <p>${character.desc}</p>
-                                  ${priceHtml}
-            charactersSlider.appendChild(card);
-        });
+        card.innerHTML = `<img src="${show.image}" alt="${show.name}" class="show-bg">
+                            <div class="show-info-overlay">
+                                <h4>${show.name}</h4>
+                                <p>${show.desc}</p>
+                                ${currentPackage !== 'custom' ? `<div class="price-tag">${displayPrice}</div>` : priceHtml}
+                                <button class="view-btn" data-video="${show.video}" data-name="${show.name}">Посмотреть видео</button>
+                            </div>`;
+        showsSlider.appendChild(card);
+    });
+}
 
-        showsData.forEach(show => {
-            const isSelected = selectedShows.some(s => s.name === show.name);
-            const card = document.createElement('div');
-            card.className = `show-card-full ${isSelected ? 'selected' : ''}`;
-            card.dataset.name = show.name;
+function renderMasterClasses(masterClassesToRender) {
+    const masterSlider = document.getElementById('master-slider');
+    if (!masterSlider) return;
+
+    masterSlider.innerHTML = '';
+    masterClassesToRender.forEach(master => {
+        const isSelected = selectedMasterClasses.some(m => m.name === master.name);
+        const card = document.createElement('div');
+        card.className = `master-card ${isSelected ? 'selected' : ''}`;
+        card.dataset.name = master.name;
+
+        let priceHtml = currentPackage === 'custom' ? `<p class="price-tag">${CUSTOM_PRICES.master}₽</p>` : '';
+
+        card.innerHTML = `<div class="master-icon">${master.icon}</div>
+                            <h4>${master.name}</h4>
+                            <p>${master.desc}</p>
+                            ${priceHtml}`;
+        masterSlider.appendChild(card);
+    });
+}
 
 
-
-                              <div class="show-info-overlay">
-                                  <h4>${show.name}</h4>
-                                  ${priceHtml}
-                                  <button class="view-btn" data-video="${show.video}" data-name="${show.name}">Посмотреть видео</button>
-            showsSlider.appendChild(card);
-        });
-
-        masterClassesData.forEach(master => {
-            const isSelected = selectedMasterClasses.some(m => m.name === master.name);
-            const card = document.createElement('div');
-            card.className = `master-card ${isSelected ? 'selected' : ''}`;
-            card.dataset.name = master.name;
-
-
-                              <h4>${master.name}</h4>
-                              <p>${master.desc}</p>
-            masterSlider.appendChild(card);
-        });
+function initSliders() {
+    renderCharacters(charactersData);
+    renderShows(showsData);
+    renderMasterClasses(masterClassesData);
 
     initSelectionHandlers();
     initGalleryButtons();
     initCarouselNavigation();
 }
+
+// --------------------------------------------------------------------------------------
+// ФУНКЦИЯ ПОИСКА
+// --------------------------------------------------------------------------------------
+
+function initSearch() {
+    const searchInput = document.getElementById('searchInput');
+    if (!searchInput) return;
+
+    searchInput.addEventListener('input', function() {
+        const query = this.value.toLowerCase().trim();
+
+        // Фильтруем персонажей
+        const filteredCharacters = charactersData.filter(c =>
+            c.name.toLowerCase().includes(query) || c.desc.toLowerCase().includes(query)
+        );
+
+        // Фильтруем шоу
+        const filteredShows = showsData.filter(s =>
+            s.name.toLowerCase().includes(query) || s.desc.toLowerCase().includes(query)
+        );
+
+        // Перерисовываем слайдеры с отфильтрованными данными
+        renderCharacters(filteredCharacters);
+        renderShows(filteredShows);
+
+        // Повторно прикрепляем обработчики выбора и видео-кнопок
+        initSelectionHandlers();
+        initGalleryButtons();
+    });
+}
+
+// --------------------------------------------------------------------------------------
+// ЛОГИКА ПАКЕТОВ И ВЫБОРА
+// --------------------------------------------------------------------------------------
 
 function initPackageSelection() {
     const packageButtons = document.querySelectorAll('.select-package');
@@ -723,6 +589,7 @@ function initPackageSelection() {
                     break;
             }
 
+            // Сброс выборов при смене пакета
             selectedCharacters = [];
             selectedShows = [];
             selectedMasterClasses = [];
@@ -736,7 +603,7 @@ function initPackageSelection() {
 
             document.getElementById('package-selection').classList.add('active');
 
-            initSliders();
+            initSliders(); // Перерисовываем слайдеры с новыми правилами
             updateSelection();
 
             setTimeout(() => {
@@ -749,9 +616,88 @@ function initPackageSelection() {
     });
 }
 
+function initSelectionHandlers() {
+    document.querySelectorAll('.character-card-full, .show-card-full, .master-card').forEach(card => {
+        card.removeEventListener('click', handleSelection); // Удаляем старый обработчик, чтобы избежать дублирования
+        card.addEventListener('click', handleSelection);
+    });
+}
+
+function handleSelection(e) {
+    if (e.target.closest('.view-btn')) return;
+
+    const type = this.classList.contains('character-card-full') ? 'character' :
+        this.classList.contains('show-card-full') ? 'show' : 'master';
+    const name = this.dataset.name;
+
+    let data, selectedArray, max;
+
+    switch (type) {
+        case 'character':
+            data = charactersData.find(c => c.name === name);
+            selectedArray = selectedCharacters;
+            max = maxCharacters;
+            break;
+        case 'show':
+            data = showsData.find(s => s.name === name);
+            selectedArray = selectedShows;
+            max = maxShows;
+            break;
+        case 'master':
+            data = masterClassesData.find(m => m.name === name);
+            selectedArray = selectedMasterClasses;
+            max = maxMasterClasses;
+            break;
+    }
+
+    const index = selectedArray.findIndex(item => item.name === name);
+
+    if (index === -1) {
+        if (selectedArray.length < max || currentPackage === 'custom') {
+            selectedArray.push({name, price: data.price});
+            this.classList.add('selected');
+            showNotification(`${type === 'character' ? 'Персонаж' : type === 'show' ? 'Шоу' : 'Мастер-класс'} "${name}" добавлен`, 'success');
+        } else {
+            showNotification(`Можно выбрать не более ${max} ${type === 'character' ? 'персонажей' : type === 'show' ? 'шоу-программ' : 'мастер-классов'}`, 'error');
+        }
+    } else {
+        selectedArray.splice(index, 1);
+        this.classList.remove('selected');
+    }
+
+    updateSelection();
+}
+
+
+// --------------------------------------------------------------------------------------
+// ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ И ОБРАБОТЧИКИ
+// --------------------------------------------------------------------------------------
+
+// ФУНКЦИЯ ПЛАВНОГО СКРОЛЛИНГА
+function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80, // Сдвиг для фиксированного хедера
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
 function initMobileMenu() {
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
+
+    if (!mobileMenuBtn || !mobileMenu) return;
 
     mobileMenuBtn.addEventListener('click', function() {
         mobileMenu.classList.toggle('active');
@@ -767,40 +713,31 @@ function initMobileMenu() {
     });
 }
 
-function initSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-}
-
 function initOrderButton() {
     const orderBtn = document.getElementById('order-btn');
+    if (!orderBtn) return;
 
     orderBtn.addEventListener('click', () => {
         updateFormSelectedServices();
 
+        const consultForm = document.querySelector('#consultForm');
+        if (consultForm) {
+            consultForm.scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
             });
+        }
     });
 }
 
 function initFormValidation() {
     const form = document.getElementById('consultationForm');
+    // !!! КРИТИЧНО !!! ЗАМЕНИТЕ ЭТОТ EMAIL НА ВАШ РЕАЛЬНЫЙ АДРЕС ПОЧТЫ
+    const RECIPIENT_EMAIL = 'order-manager@yourcompany.com';
 
+    if (!form) return;
+
+    form.addEventListener('submit', function(e) {
         e.preventDefault();
 
         const name = this.querySelector('#name');
@@ -808,26 +745,60 @@ function initFormValidation() {
         const eventDate = this.querySelector('#eventDate');
         const childBirthday = this.querySelector('#childBirthday');
         const consent = this.querySelector('#consent');
+        const emailInput = this.querySelector('#email');
 
         let isValid = true;
 
+        // --- ВАЛИДАЦИЯ ---
+        if (!name.value.trim()) { name.style.borderColor = 'red'; isValid = false; } else { name.style.borderColor = ''; }
+        if (!phone.value.match(/^\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}$/)) { phone.style.borderColor = 'red'; isValid = false; } else { phone.style.borderColor = ''; }
+        if (!eventDate.value) { eventDate.style.borderColor = 'red'; isValid = false; } else { eventDate.style.borderColor = ''; }
+        if (!childBirthday.value) { childBirthday.style.borderColor = 'red'; isValid = false; } else { childBirthday.style.borderColor = ''; }
+        if (!consent.checked) { consent.parentElement.style.color = 'red'; isValid = false; } else { consent.parentElement.style.color = ''; }
+        if (emailInput && !emailInput.value.includes('@')) { emailInput.style.borderColor = 'red'; isValid = false; } else { emailInput.style.borderColor = ''; }
 
 
+        // --- ЛОГИКА MAILTO ---
+        if (isValid) {
+            const nameVal = name.value.trim();
+            const phoneVal = phone.value;
+            const eventDateVal = eventDate.value;
+            const childBirthdayVal = childBirthday.value;
+            const total = document.getElementById('total-price').textContent;
 
+            let emailBody = `Новый ЗАКАЗ с сайта:\n\n`;
+            emailBody += `Имя клиента: ${nameVal}\n`;
+            emailBody += `Телефон: ${phoneVal}\n`;
+            emailBody += `Email клиента: ${emailInput.value.trim()}\n`;
+            emailBody += `Дата события: ${eventDateVal}\n`;
+            emailBody += `День рождения ребенка: ${childBirthdayVal}\n\n`;
 
+            const formServicesElement = document.getElementById('form-selected-services');
+            if (formServicesElement) {
+                emailBody += `--- Детали Заказа (Пакет) ---\n${formServicesElement.textContent}\n`;
             }
 
+            emailBody += `ИТОГО К ОПЛАТЕ: ${total}₽`;
 
+            const encodedSubject = encodeURIComponent(`ЗАКАЗ С САЙТА: ${nameVal} (${phoneVal})`);
+            const encodedBody = encodeURIComponent(emailBody);
 
+            const mailtoLink = `mailto:${RECIPIENT_EMAIL}?subject=${encodedSubject}&body=${encodedBody}`;
+            window.location.href = mailtoLink;
 
+            this.reset();
             resetSelection();
+            showNotification('Вы будете перенаправлены в почтовый клиент для отправки заказа!', 'success');
         } else {
+            showNotification('Пожалуйста, заполните все обязательные поля и дайте согласие.', 'error');
         }
     });
 }
 
+
 function initPhoneMask() {
     const phoneInput = document.getElementById('phone');
+    if (!phoneInput) return;
 
     phoneInput.addEventListener('input', function (e) {
         let value = this.value.replace(/\D/g, '');
@@ -846,6 +817,7 @@ function initModalClose() {
             document.querySelectorAll('.modal-overlay').forEach(modal => {
                 modal.classList.remove('active');
             });
+            document.body.classList.remove('modal-open');
         });
     });
 
@@ -853,6 +825,7 @@ function initModalClose() {
         modal.addEventListener('click', function (e) {
             if (e.target === this) {
                 this.classList.remove('active');
+                document.body.classList.remove('modal-open');
             }
         });
     });
@@ -871,15 +844,23 @@ function showNotification(message, type) {
     setTimeout(() => {
         notification.classList.remove('show');
         setTimeout(() => {
+            if (document.body.contains(notification)) {
                 document.body.removeChild(notification);
+            }
         }, 300);
     }, 3000);
 }
 
 function updateSelection() {
+    if (document.getElementById('characters-count')) {
         document.getElementById('characters-count').textContent = selectedCharacters.length;
+    }
+    if (document.getElementById('shows-count')) {
         document.getElementById('shows-count').textContent = selectedShows.length;
+    }
+    if (document.getElementById('master-count')) {
         document.getElementById('master-count').textContent = selectedMasterClasses.length;
+    }
     updateTotalPrice();
     updateCartBadge();
     updateCartDisplay();
@@ -890,13 +871,21 @@ function showVideoModal(videoUrl, title) {
     const video = document.getElementById('modal-video');
     const videoTitle = document.getElementById('video-modal-title');
 
+    if (modal && video && videoTitle) {
         video.src = videoUrl;
         videoTitle.textContent = title;
         modal.classList.add('active');
+        document.body.classList.add('modal-open');
 
+        const closeModalBtn = document.querySelector('#video-modal .close-modal');
+        if (closeModalBtn) {
+            closeModalBtn.addEventListener('click', function () {
                 video.pause();
+                video.currentTime = 0;
             });
         }
+    }
+}
 
 function initProductButtons() {
     document.querySelectorAll('.product-card .add-product-btn').forEach(btn => {
@@ -949,16 +938,34 @@ function initAdditionalServiceCheckboxes() {
 
 function updateFormSelectedServices() {
     const formServices = document.getElementById('form-selected-services');
+    if (!formServices) return;
 
+    let textContent = '';
+
+    const totalPriceElement = document.getElementById('total-price');
+    const total = totalPriceElement ? totalPriceElement.textContent : '0';
+
+    textContent += `Пакет: ${getPackageName(currentPackage)} Цена: ${total}₽\n`;
+
+    // Персонажи
     selectedCharacters.forEach(char => {
+        const price = currentPackage === 'custom' ? CUSTOM_PRICES.character + '₽' : 'Включено';
+        textContent += `Персонаж: ${char.name} (${price})\n`;
     });
 
+    // Шоу
     selectedShows.forEach(show => {
+        const price = currentPackage === 'custom' ? CUSTOM_PRICES.show + '₽' : 'Включено';
+        textContent += `Шоу: ${show.name} (${price})\n`;
     });
 
+    // Мастер-классы
     selectedMasterClasses.forEach(master => {
+        const price = currentPackage === 'custom' ? CUSTOM_PRICES.master + '₽' : 'Включено';
+        textContent += `Мастер-класс: ${master.name} (${price})\n`;
     });
 
+    // Продукты
     selectedProducts.forEach(prod => {
         let price = prod.price;
         if (currentPackage === 'custom') {
@@ -966,8 +973,10 @@ function updateFormSelectedServices() {
             else if (prod.id === 'decor') price = CUSTOM_PRICES.products.decor;
             else if (prod.id === 'pinata') price = CUSTOM_PRICES.products.pinata;
         }
+        textContent += `Продукт: ${prod.name} (${price}₽)\n`;
     });
 
+    // Дополнительные услуги
     selectedAdditionalServices.forEach(serv => {
         let price = serv.price;
         if (currentPackage === 'custom') {
@@ -975,7 +984,10 @@ function updateFormSelectedServices() {
             else if (serv.id === 'pinata') price = CUSTOM_PRICES.products.pinata;
             else if (serv.id === 'cake') price = 0;
         }
+        textContent += `Доп. услуга: ${serv.name} (${price}₽)\n`;
     });
+
+    formServices.textContent = textContent;
 }
 
 
@@ -986,34 +998,41 @@ function resetSelection() {
     selectedMasterClasses = [];
     selectedProducts = [];
     selectedAdditionalServices = [];
+
+    const packageSelection = document.getElementById('package-selection');
+    if (packageSelection) {
+        packageSelection.classList.remove('active');
+    }
+
+    const formServices = document.getElementById('form-selected-services');
+    if (formServices) {
+        formServices.innerHTML = '';
+    }
+
     document.querySelectorAll('.character-card-full, .show-card-full, .master-card').forEach(card => {
         card.classList.remove('selected');
     });
     document.querySelectorAll('.additional-service').forEach(chk => chk.checked = false);
+
+    // Перерисовываем, чтобы очистить выбранные стили
+    initSliders();
     updateSelection();
 }
 
 function updateTotalPrice() {
     const totalPriceElement = document.getElementById('total-price');
+    if (!totalPriceElement) return;
+
     let total = 0;
+
     if (currentPackage === 'custom') {
-        total += selectedCharacters.length * CUSTOM_PRICES.character;
-        total += selectedShows.length * CUSTOM_PRICES.show;
-        total += selectedMasterClasses.length * CUSTOM_PRICES.master;
-        selectedProducts.forEach(prod => {
-            if (prod.id === 'photo') total += CUSTOM_PRICES.products.photo;
-            else if (prod.id === 'decor') total += CUSTOM_PRICES.products.decor;
-            else if (prod.id === 'pinata') total += CUSTOM_PRICES.products.pinata;
-        });
-        selectedAdditionalServices.forEach(serv => {
-            if (serv.id === 'photographer') total += CUSTOM_PRICES.products.photo;
-            else if (serv.id === 'pinata') total += CUSTOM_PRICES.products.pinata;
-        });
+        total = calculateCustomTotal();
     } else {
         total = basePrice;
         selectedProducts.forEach(p => total += p.price);
         selectedAdditionalServices.forEach(s => total += s.price);
     }
+
     totalPriceElement.textContent = total.toLocaleString('ru-RU');
 }
 
@@ -1069,6 +1088,8 @@ function initFloatingCart() {
     const clearCartBtn = document.getElementById('clear-cart');
     const orderFromCartBtn = document.getElementById('order-from-cart');
 
+    if (!cartBtn || !cartPanel || !closeCart || !clearCartBtn || !orderFromCartBtn) return;
+
     cartBtn.addEventListener('click', function () {
         cartPanel.classList.toggle('active');
         updateCartDisplay();
@@ -1088,15 +1109,20 @@ function initFloatingCart() {
     orderFromCartBtn.addEventListener('click', function () {
         if (currentPackage) {
             cartPanel.classList.remove('active');
+            const consultForm = document.querySelector('#consultForm');
+            if (consultForm) {
+                consultForm.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
                 });
+            }
         } else {
             showNotification('Пожалуйста, сначала выберите пакет услуг', 'error');
         }
     });
 
     document.addEventListener('click', function (e) {
+        if (!cartPanel.contains(e.target) && !cartBtn.contains(e.target) && !e.target.closest('#view-selected-btn')) {
             cartPanel.classList.remove('active');
         }
     });
@@ -1104,6 +1130,8 @@ function initFloatingCart() {
 
 function updateCartBadge() {
     const badge = document.getElementById('cart-badge');
+    if (!badge) return;
+
     const totalItems = selectedCharacters.length + selectedShows.length +
         selectedMasterClasses.length + selectedProducts.length +
         selectedAdditionalServices.length;
@@ -1114,11 +1142,14 @@ function updateCartBadge() {
 function updateCartDisplay() {
     const cartItems = document.getElementById('cart-items');
     const cartTotal = document.getElementById('cart-total-price');
+    if (!cartItems || !cartTotal) return;
 
     let html = '';
     let total = 0;
 
+    // Пакет
     if (currentPackage) {
+        const packagePrice = currentPackage === 'custom' ? calculateCustomTotal() : basePrice;
         html += `<div class="cart-item">
             <span class="cart-item-name">Пакет "${getPackageName(currentPackage)}"</span>
             <span class="cart-item-price">${packagePrice.toLocaleString('ru-RU')}₽</span>
@@ -1126,6 +1157,7 @@ function updateCartDisplay() {
         total += packagePrice;
     }
 
+    // Персонажи
     selectedCharacters.forEach(char => {
         const price = currentPackage === 'custom' ? CUSTOM_PRICES.character : 0;
         html += `<div class="cart-item">
@@ -1135,6 +1167,7 @@ function updateCartDisplay() {
         if (currentPackage === 'custom') total += price;
     });
 
+    // Шоу
     selectedShows.forEach(show => {
         const price = currentPackage === 'custom' ? CUSTOM_PRICES.show : 0;
         html += `<div class="cart-item">
@@ -1144,6 +1177,7 @@ function updateCartDisplay() {
         if (currentPackage === 'custom') total += price;
     });
 
+    // Мастер-классы
     selectedMasterClasses.forEach(master => {
         const price = currentPackage === 'custom' ? CUSTOM_PRICES.master : 0;
         html += `<div class="cart-item">
@@ -1153,6 +1187,7 @@ function updateCartDisplay() {
         if (currentPackage === 'custom') total += price;
     });
 
+    // Продукты
     selectedProducts.forEach(prod => {
         let price = prod.price;
         if (currentPackage === 'custom') {
@@ -1167,6 +1202,7 @@ function updateCartDisplay() {
         total += price;
     });
 
+    // Дополнительные услуги
     selectedAdditionalServices.forEach(serv => {
         let price = serv.price;
         if (currentPackage === 'custom') {
@@ -1181,6 +1217,7 @@ function updateCartDisplay() {
         total += price;
     });
 
+
     if (html === '') {
         html = '<div style="text-align: center; padding: 20px; color: #666;">Корзина пуста</div>';
     }
@@ -1191,14 +1228,17 @@ function updateCartDisplay() {
 
 function calculateCustomTotal() {
     let total = 0;
+
     total += selectedCharacters.length * CUSTOM_PRICES.character;
     total += selectedShows.length * CUSTOM_PRICES.show;
     total += selectedMasterClasses.length * CUSTOM_PRICES.master;
+
     selectedProducts.forEach(prod => {
         if (prod.id === 'photo') total += CUSTOM_PRICES.products.photo;
         else if (prod.id === 'decor') total += CUSTOM_PRICES.products.decor;
         else if (prod.id === 'pinata') total += CUSTOM_PRICES.products.pinata;
     });
+
     selectedAdditionalServices.forEach(serv => {
         if (serv.id === 'photographer') total += CUSTOM_PRICES.products.photo;
         else if (serv.id === 'pinata') total += CUSTOM_PRICES.products.pinata;
@@ -1220,8 +1260,12 @@ function initIntersectionObserver() {
     });
 
     window.addEventListener('scroll', function () {
+        const header = document.querySelector('header');
+        if (header) {
             if (window.scrollY > 50) {
+                header.classList.add('scrolled');
             } else {
+                header.classList.remove('scrolled');
             }
         }
     });
@@ -1286,6 +1330,12 @@ function renderReviewPhotos() {
             if (!img) return;
             const src = img.dataset.photoSrc || img.getAttribute('src');
             const title = img.dataset.photoTitle || img.getAttribute('alt') || '';
+
+            // ИСПОЛЬЗУЕМ ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ
+            if (imageViewModal && modalImageView && modalImageTitle) {
+                modalImageView.src = src;
+                modalImageTitle.textContent = title;
+                imageViewModal.classList.add('active');
                 document.body.classList.add('modal-open');
             }
         });
@@ -1301,20 +1351,58 @@ function renderReviewPhotos() {
     }
 }
 
+// --------------------------------------------------------------------------------------
+// DOMContentLoaded (ИНИЦИАЛИЗАЦИЯ)
+// --------------------------------------------------------------------------------------
 
+document.addEventListener('DOMContentLoaded', function () {
+    // Основные инициализации
+    initPackageSelection();
+    initSliders(); // Инициализирует и рендерит все слайдеры
+    initMobileMenu();
+    initSmoothScroll(); // ПЛАВНЫЙ СКРОЛЛИНГ
+    initOrderButton();
+    initFormValidation();
+    initPhoneMask();
+    initModalClose();
+    initIntersectionObserver();
+    initProductButtons();
+    initAdditionalServiceCheckboxes();
+    initReviewPhotos();
+    initFloatingCart();
+    initSwipers();
+    initFAQ();
+    initSelectedServicesModal();
+    initSearch(); // ФУНКЦИЯ ПОИСКА
 
-
+    // Инициализация модалки изображений (Используем глобальные переменные)
+    if (imageViewModal && modalImageView) {
+        if (closeImageViewModalBtn) {
+            closeImageViewModalBtn.addEventListener('click', () => {
+                imageViewModal.classList.remove('active');
                 document.body.classList.remove('modal-open');
+                modalImageView.src = '';
+            });
         }
 
+        imageViewModal.addEventListener('click', (e) => {
+            if (e.target === imageViewModal) {
+                imageViewModal.classList.remove('active');
                 document.body.classList.remove('modal-open');
+                modalImageView.src = '';
             }
         });
 
         document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && imageViewModal.classList.contains('active')) {
+                imageViewModal.classList.remove('active');
+                document.body.classList.remove('modal-open');
+                modalImageView.src = '';
             }
         });
+    }
 
+    // Инициализация видео модалки
     const videoModal = document.getElementById('video-modal');
     const modalVideo = document.getElementById('modal-video');
     const playVideoBtn = document.getElementById('play-video-btn');
@@ -1322,6 +1410,7 @@ function renderReviewPhotos() {
     if (playVideoBtn) {
         playVideoBtn.addEventListener('click', () => {
             if (videoModal && modalVideo) {
+                modalVideo.src = DEFAULT_VIDEO_URL;
                 videoModal.classList.add('active');
                 document.body.classList.add('modal-open');
             }
@@ -1330,24 +1419,15 @@ function renderReviewPhotos() {
 
     if (videoModal) {
         videoModal.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal-overlay') || e.target.closest('.close-modal')) {
                 videoModal.classList.remove('active');
                 document.body.classList.remove('modal-open');
                 if (modalVideo) {
                     modalVideo.pause();
                     modalVideo.currentTime = 0;
+                    modalVideo.src = '';
                 }
             }
-        });
-    }
-
-    // Обработчик для мобильного меню
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const navCenter = document.querySelector('.nav-center');
-        mobileMenuBtn.addEventListener('click', () => {
-        });
-
-            link.addEventListener('click', () => {
-            });
         });
     }
 });
