@@ -74,7 +74,7 @@ const showsData = [
         "price": "1400 AED",
         "age": "2-7 лет",
         "duration": "30 минут",
-        "video": DEFAULT_VIDEO_URL,
+        "video": "https://drive.google.com/file/d/1HW8Wf__ZoZ-5D9EPbV0dwMr1Vr13FX2H/view?usp=drivesdk",
         "image": "images/bubble.jpg"
     },
     {
@@ -119,7 +119,7 @@ const showsData = [
         "price": "1800 AED",
         "age": "5-15 лет",
         "duration": "45 минут",
-        "video": "https://daniliuskosmaches.github.io/videos/Icecream.mp4",
+        "video": "https://drive.google.com/file/d/1TCbMzXBusqimCSElbbKpEqeeJH_xadex/view?usp=drivesdk",
         "image": "images/cryo.jpg"
     },
     {
@@ -128,7 +128,7 @@ const showsData = [
         "price": "1000 AED (до 10 детей)",
         "age": "5-10 лет",
         "duration": "30-45 минут",
-        "video": DEFAULT_VIDEO_URL,
+        "video": "https://drive.google.com/file/d/1i91vi84XkzoPr7hf95qb1m3Bg8Yyqzri/view?usp=drivesdk",
         "image": "images/slime.jpg"
     },
     {
@@ -155,7 +155,7 @@ const showsData = [
         "price": "1400 AED",
         "age": "4-7 лет",
         "duration": "30 минут",
-        "video": DEFAULT_VIDEO_URL,
+        "video": "https://drive.google.com/file/d/14aFTtgVpWoTFzYG9rwZMXH9NppkdSalh/view?usp=drivesdk",
         "image": "images/magic.jpg"
     },
     {
@@ -191,7 +191,7 @@ const showsData = [
         "price": "700 AED",
         "age": "12-18 лет",
         "duration": "60 минут",
-        "video": DEFAULT_VIDEO_URL,
+        "video": "https://drive.google.com/file/d/1YjaRaLJfVEltMXjLBxmX2Bteegpx0o0g/view?usp=drivesdk",
         "image": "images/default-show.jpg"
     }
 ];
