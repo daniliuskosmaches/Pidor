@@ -594,6 +594,37 @@ h2:after {
     transform: translateY(0);
 }
 
+/* Централизованный блок выбора пакета (отменяем full-bleed) */
+#package-selection {
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto 0 auto;
+    border-radius: 12px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+/* Убираем лишние внутренние отступы у навигации и каруселей, чтобы не резало карточки по краям */
+#package-selection .selection-navigation {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#package-selection .character-carousel,
+#package-selection .show-carousel,
+#package-selection .master-carousel {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* На мобильных сохраняем аккуратное отображение */
+@media (max-width: 768px) {
+    #package-selection {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
 .selected-package-info {
     text-align: center;
     margin-bottom: 30px;
@@ -695,9 +726,31 @@ h2:after {
 .character-carousel-container,
 .show-carousel-container,
 .master-carousel-container {
-    flex: 1;
     overflow: hidden;
     position: relative;
+    /* Центрируем «проход» и ограничиваем ровно одной карточкой */
+    width: auto;
+    margin: 0 auto;
+}
+
+/* Для десктопа: ширина видимой области равна ширине карточки + зазор */
+.character-carousel-container {
+    max-width: calc(280px + 2 * 15px); /* card width 280px + margins 0 15px */
+}
+.show-carousel-container {
+    max-width: calc(300px + 2 * 15px); /* card width 300px + margins 0 15px */
+}
+.master-carousel-container {
+    max-width: calc(280px + 2 * 15px); /* расширение до крупных карт при ховере/selected */
+}
+
+/* На мобильных у вас карты 250px шириной */
+@media (max-width: 768px) {
+    .character-carousel-container,
+    .show-carousel-container,
+    .master-carousel-container {
+        max-width: calc(250px + 2 * 10px); /* card width 250px + margins 0 10px */
+    }
 }
 
 .character-carousel,
