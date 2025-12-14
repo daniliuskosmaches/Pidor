@@ -547,6 +547,36 @@ function renderMasterClasses(masterClassesToRender) {
 }
 
 
+function initCharacterSearch() {
+    const input = document.querySelector('.characters-search-input');
+    const clearBtn = document.querySelector('.search-clear');
+    if (!input) return;
+
+    const apply = () => {
+        const q = (input.value || '').trim().toLowerCase();
+        const filteredCharacters = charactersData.filter(c =>
+            (c.name || '').toLowerCase().includes(q) || (c.desc || '').toLowerCase().includes(q)
+        );
+        const filteredShows = showsData.filter(s =>
+            (s.name || '').toLowerCase().includes(q) || (s.desc || '').toLowerCase().includes(q)
+        );
+        renderCharacters(filteredCharacters);
+        renderShows(filteredShows);
+        initSelectionHandlers();
+        initGalleryButtons();
+    };
+
+    input.addEventListener('input', apply, { passive: true });
+    if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+            input.value = '';
+            apply();
+            input.focus();
+        });
+    }
+    if (input.value && input.value.trim()) apply();
+}
+
 function initSliders() {
     renderCharacters(charactersData);
     renderShows(showsData);
@@ -1485,6 +1515,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Левое бургер-меню (off-canvas)
     initSideNav();
     initSearch(); // ФУНКЦИЯ ПОИСКА
+    initCharacterSearch(); // Поиск в секции Персонажи
 
     // Инициализация модалки изображений (Используем глобальные переменные)
     if (imageViewModal && modalImageView) {
