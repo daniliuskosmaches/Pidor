@@ -441,6 +441,25 @@ function renderCharacters(charactersToRender) {
     if (!charactersSlider) return;
 
     charactersSlider.innerHTML = '';
+
+    if (!charactersToRender || charactersToRender.length === 0) {
+        const card = document.createElement('div');
+        card.className = 'character-card-full';
+        card.style.display = 'flex';
+        card.style.alignItems = 'center';
+        card.style.justifyContent = 'center';
+        card.style.background = 'rgba(214,196,155,0.1)';
+        card.style.border = '1px dashed var(--accent-color)';
+        card.innerHTML = `<div class="character-info-overlay" style="position:static;background:none;color:var(--bg-color);">
+            <h4>Не нашли персонажа?</h4>
+            <p>Напишите нам — мы организуем!</p>
+            <button class="view-btn" data-mailto="true">Написать</button>
+        </div>`;
+        card.addEventListener('click', () => openNotFoundEmail('персонажа'));
+        charactersSlider.appendChild(card);
+        return;
+    }
+
     charactersToRender.forEach(character => {
         const isSelected = selectedCharacters.some(c => c.name === character.name);
         const card = document.createElement('div');
@@ -464,6 +483,25 @@ function renderShows(showsToRender) {
     if (!showsSlider) return;
 
     showsSlider.innerHTML = '';
+
+    if (!showsToRender || showsToRender.length === 0) {
+        const card = document.createElement('div');
+        card.className = 'show-card-full';
+        card.style.display = 'flex';
+        card.style.alignItems = 'center';
+        card.style.justifyContent = 'center';
+        card.style.background = 'rgba(214,196,155,0.1)';
+        card.style.border = '1px dashed var(--accent-color)';
+        card.innerHTML = `<div class="show-info-overlay" style="position:static;background:none;color:var(--bg-color);">
+            <h4>Не нашли шоу-программу?</h4>
+            <p>Напишите нам — мы организуем!</p>
+            <button class="view-btn" data-mailto="true">Написать</button>
+        </div>`;
+        card.addEventListener('click', () => openNotFoundEmail('шоу-программу'));
+        showsSlider.appendChild(card);
+        return;
+    }
+
     showsToRender.forEach(show => {
         const isSelected = selectedShows.some(s => s.name === show.name);
         const card = document.createElement('div');
@@ -524,7 +562,7 @@ function initSliders() {
 // --------------------------------------------------------------------------------------
 
 function initSearch() {
-    const inputs = document.querySelectorAll('#searchInput'); // ��ба поля: в шапке и в сайдбаре
+    const inputs = document.querySelectorAll('#searchInput'); // поиск только в боковом меню
     if (!inputs.length) return;
 
     const onInput = (e) => {
@@ -549,6 +587,30 @@ function initSearch() {
     };
 
     inputs.forEach(inp => inp.addEventListener('input', onInput, { passive: true }));
+
+    // Первичный рендер без фильтра (если поле уже содержит что-то после возврата)
+    const initVal = inputs[0].value?.trim();
+    if (initVal) onInput({ target: inputs[0] });
+}
+
+// Помощник для «не нашли?» — открывает письмо с предзаполненным текстом
+function openNotFoundEmail(subjectTarget) {
+    const email = 'order-manager@yourcompany.com';
+    const subject = encodeURIComponent(`Запрос: не нашли ${subjectTarget}`);
+    const body = encodeURIComponent(
+`Здравствуйте!
+
+Не нашёл(а) ${subjectTarget} в списке на сайте. Опишите, пожалуйста, мои пожелания:
+
+— Что нужно организовать: 
+— Дата мероприятия: 
+— Город/локация: 
+— Количество детей: 
+— Бюджет: 
+
+Спасибо!`
+    );
+    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
 }
 
 // --------------------------------------------------------------------------------------
