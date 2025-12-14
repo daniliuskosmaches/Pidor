@@ -524,30 +524,31 @@ function initSliders() {
 // --------------------------------------------------------------------------------------
 
 function initSearch() {
-    const searchInput = document.getElementById('searchInput');
-    if (!searchInput) return;
+    const inputs = document.querySelectorAll('#searchInput'); // ��ба поля: в шапке и в сайдбаре
+    if (!inputs.length) return;
 
-    searchInput.addEventListener('input', function() {
-        const query = this.value.toLowerCase().trim();
+    const onInput = (e) => {
+        const query = e.target.value.toLowerCase().trim();
 
-        // Фильтруем персонажей
+        // синхронизируем значение между всеми полями
+        inputs.forEach(inp => { if (inp !== e.target) inp.value = e.target.value; });
+
+        // Фильтр по персонажам
         const filteredCharacters = charactersData.filter(c =>
-            c.name.toLowerCase().includes(query) || c.desc.toLowerCase().includes(query)
+            (c.name || '').toLowerCase().includes(query) || (c.desc || '').toLowerCase().includes(query)
         );
-
-        // Фильтруем шоу
+        // Фильтр по шоу
         const filteredShows = showsData.filter(s =>
-            s.name.toLowerCase().includes(query) || s.desc.toLowerCase().includes(query)
+            (s.name || '').toLowerCase().includes(query) || (s.desc || '').toLowerCase().includes(query)
         );
 
-        // Перерисовываем слайдеры с отфильтрованными данными
         renderCharacters(filteredCharacters);
         renderShows(filteredShows);
-
-        // Повторно прикрепляем обработчики выбора и видео-кнопок
         initSelectionHandlers();
         initGalleryButtons();
-    });
+    };
+
+    inputs.forEach(inp => inp.addEventListener('input', onInput, { passive: true }));
 }
 
 // --------------------------------------------------------------------------------------

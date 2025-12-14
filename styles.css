@@ -99,6 +99,37 @@ nav {
     flex-shrink: 0;
 }
 
+/* Поиск в шапке */
+.nav-search {
+    flex: 1 1 320px;
+    display: flex;
+    justify-content: center;
+    padding: 0 12px;
+}
+.nav-search-input {
+    width: 100%;
+    max-width: 420px;
+    height: 38px;
+    border: 1px solid var(--accent-color);
+    background: rgba(214, 196, 155, 0.1);
+    color: var(--text-color);
+    border-radius: 20px;
+    padding: 0 14px;
+    font-family: inherit;
+}
+
+/* Поиск в сайдбаре */
+.sidenav-search { padding: 8px 12px; }
+.sidenav-search-input {
+    width: 100%;
+    height: 40px;
+    border: 1px solid var(--accent-color);
+    background: rgba(214, 196, 155, 0.1);
+    color: var(--text-color);
+    border-radius: 8px;
+    padding: 0 12px;
+}
+
 .nav-button {
     display: inline-flex;
     align-items: center;
@@ -2368,8 +2399,14 @@ h2:after {
 
     .character-card-full,
     .show-card-full {
-        width: 250px;
+        width: 220px; /* немного уже, чтобы аккуратно помещались по одной */
         margin: 0 10px;
+    }
+
+    /* под один viewport в мобильной карусели */
+    .character-carousel-container,
+    .show-carousel-container {
+        max-width: calc(220px + 2 * 10px);
     }
 
     .products-grid {
