@@ -1271,6 +1271,51 @@ function initIntersectionObserver() {
     });
 }
 
+// Off-canvas левое меню
+function initSideNav() {
+    const burger = document.getElementById('mobileMenuBtn');
+    const sidenav = document.getElementById('sidenav');
+    const overlay = document.getElementById('sidenavOverlay');
+    const closeBtn = document.getElementById('sidenavClose');
+
+    if (!burger || !sidenav || !overlay || !closeBtn) return;
+
+    const open = () => {
+        sidenav.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    };
+    const close = () => {
+        sidenav.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    };
+
+    burger.addEventListener('click', open);
+    closeBtn.addEventListener('click', close);
+    overlay.addEventListener('click', close);
+
+    sidenav.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') close();
+    });
+
+    // Свайп закрыть (простой вариант)
+    let startX = null;
+    sidenav.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+    }, { passive: true });
+    sidenav.addEventListener('touchmove', (e) => {
+        if (startX === null) return;
+        const currentX = e.touches[0].clientX;
+        if (startX - currentX > 50) {
+            close();
+            startX = null;
+        }
+    }, { passive: true });
+}
+
 function initCarouselNavigation() {
     function setupCarouselNavigation(prevBtnId, nextBtnId, sliderId) {
         const prevBtn = document.getElementById(prevBtnId);
@@ -1373,6 +1418,9 @@ document.addEventListener('DOMContentLoaded', function () {
     initSwipers();
     initFAQ();
     initSelectedServicesModal();
+
+    // Левое бургер-меню (off-canvas)
+    initSideNav();
     initSearch(); // ФУНКЦИЯ ПОИСКА
 
     // Инициализация модалки изображений (Используем глобальные переменные)
